@@ -1,0 +1,52 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mutation {
+  seedDatabase: Boolean!
+  toggleIndexing(enable: Boolean!): Boolean!
+  toggleNPlus1Refactor(enable: Boolean!): Boolean!
+}
+
+type Order {
+  id: ID!
+  products: [Product!]
+  totalAmount: Float!
+  user: User
+  userId: String
+}
+
+type PageInfo {
+  endCursor: String
+  hasNextPage: Boolean!
+}
+
+type Product {
+  id: ID!
+  name: String!
+  price: Float!
+}
+
+type Query {
+  orders: [Order!]!
+  products: [Product!]!
+  users: [User!]!
+  usersPaginated(cursor: String, limit: Int! = 10): UserConnection!
+}
+
+type User {
+  email: String!
+  id: ID!
+  name: String!
+  orders: [Order]!
+}
+
+type UserConnection {
+  edges: [UserEdge!]!
+  pageInfo: PageInfo!
+}
+
+type UserEdge {
+  cursor: String!
+  node: User!
+}
